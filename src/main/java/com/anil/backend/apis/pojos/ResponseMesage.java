@@ -6,18 +6,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@EqualsAndHashCode
-@JsonInclude(value=Include.NON_NULL)
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseMesage {
+@EqualsAndHashCode(callSuper=true)
+public class ResponseMesage extends AbstractPojo {
 
 	private String applicationCode;
 	private Object response;

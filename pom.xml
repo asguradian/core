@@ -13,7 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>backend</name>
-	<description>This project is a back end or Tuitter</description>
+	<description>This project is a back end for Twitter</description>
 
 	<properties>
 		<java.version>1.8</java.version>
