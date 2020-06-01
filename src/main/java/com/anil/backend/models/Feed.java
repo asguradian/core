@@ -1,6 +1,7 @@
 package com.anil.backend.models;
 
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,10 +39,21 @@ public class Feed extends AbstractModel<Feed> {
    */
   @Column(name="document_id", unique=true)
   private Long documentId;
-  
+  @JsonIgnore
   @JoinColumn(name="posted_by",nullable=false)
   @ManyToOne(fetch=FetchType.LAZY)
   private User user;
+  
+  public static Feed by(User user, String discription, Long documentId) {
+	  Objects.requireNonNull(user);
+	  Objects.requireNonNull(discription);
+	  Objects.requireNonNull(documentId);
+	  Feed feed=new Feed();
+	  feed.setUser(user);
+	  feed.setDiscription(discription);
+	  feed.setDocumentId(documentId);
+      return feed;
+  }
 
   @Override
   public void applyPrePersistChanges() {

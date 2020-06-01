@@ -6,11 +6,15 @@ import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -56,6 +60,13 @@ public class User extends AbstractModel<User> {
 	private boolean active;
 	@Column(name="created_date")
 	private Date createdDate;
+	@JsonIgnore   
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(
+	            name = "followers",
+	            joinColumns = {@JoinColumn(name = "user_id")},
+	            inverseJoinColumns = {@JoinColumn(name = "follower_id")})
+	private Set<User> followers;
 	@Override
 	public void applyPrePersistChanges() {
 		this.active=true;
