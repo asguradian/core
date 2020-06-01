@@ -1,10 +1,8 @@
 package com.anil.backend;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 
-import org.assertj.core.util.Arrays;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +14,7 @@ import com.anil.backend.models.User;
 import com.anil.backend.models.UserAddress;
 import com.anil.backend.models.UserInfo;
 import com.anil.backend.repository.UserRepo;
+
 
 @SpringBootApplication
 public class BackendApplication {
